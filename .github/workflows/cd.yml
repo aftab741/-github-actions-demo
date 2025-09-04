@@ -1,21 +1,26 @@
 name: CI Pipeline
+
 on:
- pull_request:
- branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
 jobs:
- build:
- runs-on: ubuntu-latest
- steps:
- - name: Checkout Code
- uses: actions/checkout@v3
- - name: Setup JDK
- uses: actions/setup-java@v3
- with:
- java-version: '17'
- - name: Cache Maven Packages
- uses: actions/cache@v3
- with:
- path: ~/.m2
- key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
- - name: Build & Test
- run: mvn clean install
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+
+      - name: Cache Maven Packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+
+      - name: Build & Test
+        run: mvn clean install
