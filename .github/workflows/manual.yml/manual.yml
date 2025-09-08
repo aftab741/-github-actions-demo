@@ -1,0 +1,11 @@
+name: Manual Trigger Demo
+
+on:
+  workflow_dispatch:   # enables "Run workflow" button in Actions tab
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hello
+        run: echo "👋 This workflow was triggered manually!"
