@@ -1,12 +1,13 @@
-name: Manual Trigger Workflow
 on:
-  workflow_dispatch:   # Enables manual trigger from GitHub UI
+  workflow_dispatch:
+    inputs:
+      username:
+        description: 'Enter your name'
+        required: true
+        default: 'Aftab'
+
 jobs:
   demo:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Print Message
-        run: echo "This workflow was triggered manually!"
+      - run: echo "Hello ${{ github.event.inputs.username }}!"
