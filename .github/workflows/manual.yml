@@ -1,13 +1,14 @@
+name: Manual Trigger Workflow
+
 on:
   workflow_dispatch:
-    inputs:
-      username:
-        description: 'Enter your name'
-        required: true
-        default: 'Aftab Mohammed'
 
 jobs:
   demo:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello ${{ github.event.inputs.username }}!"
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Print Secret (masked)
+        run: echo "The secret is ${{ secrets.MY_SECRET }}"
