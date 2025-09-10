@@ -3,7 +3,7 @@ name: Hello World
 on: [push]
 
 jobs:
-  Greetings:
+  greetings:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
