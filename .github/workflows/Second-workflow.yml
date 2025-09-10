@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+         submodules: false
 
       - name: Print Message
         run: echo "Hello ${{ github.event.inputs.username }}! -> ${{ github.event.inputs.message }}"
